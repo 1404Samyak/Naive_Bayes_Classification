@@ -1,0 +1,2 @@
+This contains another classification use case where we have used naive bayes classification algorithm and compared its performance with trivial logistic regression model along with hyperparameter tuning with help of grid search cv
+As our independent features have continuous values we should use gaussian naive bias 
