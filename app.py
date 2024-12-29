@@ -36,12 +36,12 @@ def user_input_features():
     data = {
         "total_bill": total_bill,
         "tip": tip,
+        "sex": sex,
+        "time": time,
         "size": size,
         "day_Fri": day_fri,
         "day_Sat": day_sat,
         "day_Sun": day_sun,
-        "sex_male": sex,
-        "time_lunch": time
     }
     features = pd.DataFrame(data, index=[0])
     return features
@@ -52,14 +52,16 @@ user_input = user_input_features()
 st.subheader("User Input:")
 st.write(user_input)
 
-# Preprocess the input (scaling)
-input_scaled = scaler.transform(user_input)
+# Add a "Predict" button
+if st.button("Predict Smoker Status"):
+    # Preprocess the input (scaling)
+    input_scaled = scaler.transform(user_input)
 
-# Predict the smoker status
-prediction = model.predict(input_scaled)
+    # Predict the smoker status
+    prediction = model.predict(input_scaled)
 
-# Display prediction
-if prediction[0] == 0:
-    st.subheader("Prediction: Not a Smoker")
-else:
-    st.subheader("Prediction: Smoker")
+    # Display prediction
+    if prediction[0] == 0:
+        st.subheader("Prediction: Not a Smoker")
+    else:
+        st.subheader("Prediction: Smoker")
